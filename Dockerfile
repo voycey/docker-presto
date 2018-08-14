@@ -1,17 +1,17 @@
 FROM java:jdk
 
-MAINTAINER Jiayu Liu <etareduce@gmail.com>
+MAINTAINER Daniel Voyce <dan@783digital.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-ADD https://repo1.maven.org/maven2/com/facebook/presto/presto-server/0.157/presto-server-0.157.tar.gz \
+ADD https://repo1.maven.org/maven2/com/facebook/presto/presto-server/0.208/presto-server-0.208.tar.gz \
     /tmp/presto.tar.gz
 
 RUN mkdir -p /opt/presto &&\
     tar -zxvf /tmp/presto.tar.gz -C /opt/presto &&\
     rm /tmp/presto.tar.gz
 
-ENV HOME /opt/presto/presto-server-0.157
+ENV HOME /opt/presto/presto-server-0.208
 
 WORKDIR $HOME
 
@@ -24,4 +24,4 @@ VOLUME $HOME/data/
 
 EXPOSE 8080
 
-CMD ["/opt/presto/presto-server-0.157/bin/launcher", "run"]
+CMD ["/opt/presto/presto-server-0.208/bin/launcher", "run"]
